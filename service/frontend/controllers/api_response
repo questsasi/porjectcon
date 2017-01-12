@@ -1,0 +1,73 @@
+--------------------
+| OUTPUT IF FAILURE |
+--------------------
+{
+    "status": "error",
+    "data": {
+        "id": [
+            "ID cannot be blank."
+        ],
+        "supplier_id": [
+            "Supplier ID cannot be blank."
+        ]
+    }
+}
+______________________________________________________________________
+{
+    "status": "error",
+    "data": {
+        "message": "method not allowed"
+    }
+}
+________________________________________________________________________
+{
+    "status": "error",
+    "data": {
+        "message": "bad request"
+    }
+}
+_________________________________________________________________________
+{
+    "status": "error",
+    "data": {
+        "message": "bad request"
+    }
+}
+_________________________________________________________________________
+{
+    "status": "error",
+    "data": {
+        "message": "record not delete"
+    }
+}
+_________________________________________________________________________
+{
+    "status": "error",
+    "data": {
+        "message": "record not update"
+    }
+}
+_________________________________________________________________________
+---------------------
+| OUTPUT IF SUCCESS |
+---------------------
+{
+    "status": "success",
+    "data": {
+        "message": "record saved successfully"
+    }
+}
+_________________________________________________________________________
+{
+    "status": "success",
+    "data": {
+        "message": "record updated successfully"
+    }
+}
+__________________________________________________________________________
+{
+    "status": "success",
+    "data": {
+        "message": "record deleted successfully"
+    }
+}
