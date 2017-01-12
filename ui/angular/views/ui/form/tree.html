@@ -1,0 +1,198 @@
+
+ <div class=" panel panel-default md-whiteframe-z0 bg-white">
+        <ul class="nav nav-lines nav-tabs b-warning">
+          <li class="active panel r-3x b-l-success b-l-5x inline">
+            <a href data-toggle="tab" data-target="#tab_4">Pages</a>
+          </li>
+          <li class="panel r-3x b-l-success b-l-5x inline">
+            <a href data-toggle="tab" data-target="#tab_5">Components <span class="badge bg-warning badge-xs">5</span></a>
+          </li>
+          <li class=" panel  r-3x b-l-success b-l-5x inline">
+            <a href data-toggle="tab" data-target="#tab_6">UI Kits</a>
+          </li>
+        </ul>
+        <div class="tab-content p m-b-md b-t b-t-2x">
+          <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab_4">
+            Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+          </div>
+          <div role="tabpanel" class="tab-pane animated fadeIn" id="tab_5">
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+          </div>
+          <div role="tabpanel" class="tab-pane animated fadeIn" id="tab_6">
+            <div class="card-body">
+    <div class="row row-sm">
+     
+      <div class="md-form-group col-sm-6">
+      <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="ctrl.noCache"
+          md-selected-item="ctrl.selectedItem"
+          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+          md-search-text="ctrl.searchText"
+          md-selected-item-change="ctrl.selectedItemChange(item)"
+          md-items="item in ctrl.querySearch(ctrl.searchText)"
+          md-item-text="item.display"
+          md-min-length="0"
+          placeholder=" Name">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No matches found for "{{ctrl.searchText}}".
+        </md-not-found>
+      </md-autocomplete>
+      </div>
+      <div class="col-sm-4">
+        <div class="md-button-group ">
+          <label>Pay As:</label>
+          <md-button ng-click="save('0')" class="md-raised md-primary">left</md-button>
+          <md-button ng-click="save('1')" class="md-raised md-primary">middle</md-button>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="md-form-group float-label">
+          <label>Total Day Worked:</label>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="md-form-group">
+          <input class="md-input" ng-model="user.address">
+          <label>Address</label>
+        </div>
+      </div>
+      
+      <div class="col-sm-4">
+        <div class="md-form-group">
+          <input class="md-input" ng-model="user.state">
+          <label>State</label>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="md-form-group">
+          <input class="md-input" ng-model="user.postalCode">
+          <label>Postal Code</label>
+        </div>
+      </div>
+
+    
+    <div class="table-responsive  col-sm-12">
+      <table ui-jp="dataTable" class="table table-striped b-t b-b">
+        <thead>
+          <tr>
+            <td>
+            <md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAll()">
+            </md-checkbox>Date
+          </td>
+            <td >Main</td>  
+            <td >Ot Main</td>
+            <td >Assit</td>
+            <td >Ot Assit</td>
+            <td >Amount</td>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAll()">
+            </md-checkbox>1</td>
+        <td>jhe</td>
+        <td>egj</td>
+        <td>jkdsfh</td>
+        <td>jdhsg</td>
+        <td>76548</td></tr>
+        <tr>
+        <td><md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAll()">
+            </md-checkbox>2</td>
+        <td>djhe</td>
+        <td>pegj</td>
+        <td>sjkdsfh</td>
+        <td>jdhsg</td>
+        <td>67587</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+          </div>
+        </div>
+
+       
+  
+
+
+      </div>
+
+     <script type="text/javascript">
+         var app=angular.module('myApp',['ngMaterial'])
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('primary')
+    .primaryPalette('blue')
+    .accentPalette('orange');
+})
+app.controller('Appctrl',function($scope){
+  $scope.buttons={
+    left:false,
+    middle:false,
+    right:false
+  };
+  var keys=Object.keys($scope.buttons);
+  $scope.radioModel='middle';
+  
+  $scope.save=function(id){
+    $scope.radioModel=keys[id];
+  };
+  
+});
+     </script> 
+  
+  <script type="text/javascript">
+    
+
+angular.module('checkboxDemo3', ['ngMaterial'])
+
+app.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
+});
+
+
+</script>
+  

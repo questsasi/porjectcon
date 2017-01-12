@@ -1,0 +1,146 @@
+<div class="row">
+<div class="col-sm-12">
+ <div ng-app="app" ng-controller="Test">
+       
+         <button  ng-click="show = 1" class="btn btn-info">Weekly</button>
+   <button  ng-click="show = 2" class="btn btn-info">Monthly</button>
+ 
+    <div class="form-group" ng-show="show==1" >
+       <p>
+    <div ng-app="TableFilterApp" ng-controller="TableFilterController">
+     <table>
+    <tr><th> Material Name</th></tr>
+    <tr><td><input ng-model="f.name" class="md-input"></td><td></tr>
+    <tr ng-repeat="p in planets | filter:f"><td>{{p.name}}</td></tr>
+    </table></div>
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      Material Process
+    </div>
+    <div class="table-responsive">
+      <table ui-jp="dataTable" ui-options="{
+          sAjaxSource: 'api/datatable.json',
+          aoColumns: [
+            { mData: 'engine' },
+            { mData: 'browser' },
+            { mData: 'platform' },
+            { mData: 'version' },
+             { mData: 'browser' },
+            { mData: 'platform' },
+            { mData: 'version' },
+              { mData: 'version' },
+            { mData: 'grade' }
+          ]
+        }" class="table table-striped b-t b-b">
+        <thead>
+          <tr>
+            <th  style="width:20%">Date</th>
+            <th  style="width:25%">Time</th>
+            <th  style="width:25%">Material Name</th>
+            <th  style="width:15%">Supplier Name</th>
+            <th  style="width:15%">From</th>
+            <th  style="width:15%">Qty</th>
+            <th  style="width:15%">Rate</th>
+            <th  style="width:15%">Amount</th>
+            <th  style="width:15%">Invoice</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+      </p>
+    </div>
+
+         <div class="form-group" ng-show="show==2" >
+       <p><div class="panel panel-default">
+    <div class="panel-heading">
+      Material Process
+    </div>
+    <div class="table-responsive">
+      <table ui-jp="dataTable" ui-options="{
+          sAjaxSource: 'api/datatable.json',
+          aoColumns: [
+            { mData: 'engine' },
+            { mData: 'browser' },
+            { mData: 'platform' },
+            { mData: 'version' },
+             { mData: 'browser' },
+            { mData: 'platform' },
+            { mData: 'version' },
+              { mData: 'version' },
+            { mData: 'grade' }
+          ]
+        }" class="table table-striped b-t b-b">
+        <thead>
+          <tr>
+            <th  style="width:20%">Date</th>
+            <th  style="width:25%">Time</th>
+            <th  style="width:25%">Material Name</th>
+            <th  style="width:15%">Supplier Name</th>
+            <th  style="width:15%">From</th>
+            <th  style="width:15%">Qty</th>
+            <th  style="width:15%">Rate</th>
+            <th  style="width:15%">Amount</th>
+            <th  style="width:15%">Invoice</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div></p>
+    </div>
+
+         
+   
+    </div>
+           
+         </div>
+    </div>
+    
+</div>
+  </div>
+  <script type="text/javascript">
+        // var app = angular.module('app',[]);
+app.controller('Test',function($scope){
+        $scope.show = 1;
+
+});
+    </script>
+    <script type="text/javascript">
+      //angular.module('TableFilterApp', [])
+       app .controller('TableFilterController', function($scope) {
+          $scope.planets = [
+            {
+              name : 'Mercury',
+              distance : 0.4,
+              mass : 0.055
+            },
+            {
+              name : 'Venus',
+              distance : 0.7,
+              mass : 0.815
+            },
+            {
+              name : 'Neptune',
+              distance : 30,
+              mass : 17
+            },
+            {
+              name : 'Pluto',
+              distance : 39,
+              mass : 0.00218
+            },
+            {
+              name : 'Charon',
+              distance : 39,
+              mass :  0.000254
+            }
+          ];
+        
+        });
+      </script>
+     
+    

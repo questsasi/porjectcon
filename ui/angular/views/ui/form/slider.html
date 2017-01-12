@@ -1,0 +1,105 @@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+      DataTables
+    </div>
+    <div class="table-responsive">
+      <!--table ui-jp="dataTable" ui-options="{
+          sAjaxSource: 'api/datatable.json',
+          aoColumns: [
+           
+            { mData: 'engine' },
+            { mData: 'browser' },
+            { mData: 'platform' },
+            { mData: 'version' },
+            { mData: 'grade' }
+          ]
+        }" class="table table-striped b-t b-b" --><table ui-jp="dataTable" class="table table-striped">
+        <thead>
+          <tr>
+         
+            <th            <div layout="row" layout-wrap flex ng-controller="AppCtrl" class="md-padding demo">
+          <div flex-xs flex="50" >
+            <md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAll()">
+              <span ng-if="isChecked()"></span>
+            </md-checkbox>
+          </div>
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in items">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+               {{ item }}
+              </md-checkbox>
+            </div>
+          </div>
+       
+</th>
+            <th  style="width:25%">Browser</th>
+            <th  style="width:25%">Platform(s)</th>
+            <th  style="width:15%">Engine version</th>
+            <th  style="width:15%">CSS grade</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr><td>uytwr</td>
+        <td>asdj</td>
+       <td>sdfks</td>
+          <td>sfjh</td>
+            <td>agsf</td></tr>
+            <tr><td>agsf</td>
+        <td>jp</td>
+       <td>wrkurw</td>
+          <td>wrej</td>
+            <td>rjkhrw</td></tr>
+            <tr><td>sjkfrf</td>
+        <td>fhjskr</td>
+       <td>jkdg</td>
+          <td>mdfnf</td>
+            <td>fjkhsur</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+    angular.module('checkboxDemo3', ['ngMaterial'])
+
+app.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
+});
+</script>

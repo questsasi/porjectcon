@@ -1,0 +1,63 @@
+  
+
+  <div class="center-block w-xxl w-auto-xs p-v-sm" ng-app="app" ng-controller="LoginCtrl">
+    <div class="navbar">
+    <div class="p-lg panel md-whiteframe-z1 text-color m">
+     
+      <form name="form" ng-submit="signin()">
+        <div class="md-form-group float-label">
+          <input type="username" class="md-input" ng-model="username" required>
+          <label>Username</label>
+        </div>
+        <div class="md-form-group float-label">
+          <input type="password" class="md-input" ng-model="password" required>
+          <label>Password</label>
+        </div>      
+        <!--div class="m-b-md">        
+          <label class="md-check">
+            <input type="checkbox"><i class="indigo"></i> Keep me signed in
+          </label>
+        </div-->
+        <button md-ink-ripple type="submit" class="md-btn md-raised pink btn-block p-h-md" >Sign in</button>
+      </form>
+    </div>
+
+    
+  </div>
+<script type="text/javascript">
+'use strict'
+//var app = angular.module('app', ["ngStorage"]);
+app.controller("LoginCtrl", function($scope, $http, $location,$window,$state,$sessionStorage) {
+    $scope.signin = function() {        
+        $http({
+            url: 'http://172.168.0.107/advanced/frontend/web/authentication/login/'+ $scope.username+'/'+ $scope.password,
+            method: "GET",
+            //data:JSON.stringify({from:$scope.username, to:$scope.password}),
+            //headers: {'Content-Type': 'application-JSON'}
+        }).success(function (response,status) {
+            if(response.status == "Success") { 
+           // console.log(response.status);           
+               // $location.path("views/pages/dashboard.html");
+
+              // $window.location.href = 'views/pages/dashboard.html'; 
+              $state.go('app.dashboard');
+
+            response.data[name];
+            console.log(response.data.Name);
+             console.log(response.data.Email);
+            sessionStorage.Name = response.data.Name; 
+            console.log(sessionStorage.Name);
+            //sessionStorage.setItem("name", "Nicholas");  
+            //var name = sessionStorage.getItem("name");
+
+            }
+            else{
+              $state.go('app.login');
+            }   
+        })
+    }
+});
+
+     
+
+</script>

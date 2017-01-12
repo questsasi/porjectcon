@@ -1,0 +1,15 @@
+contacts:[{
+	id:1,
+	name:cement,
+	type:kg
+},
+{
+	id:2,
+	name:water,
+	type:litre
+},
+{
+	id:3,
+	name:rod,
+	type:kg
+}]

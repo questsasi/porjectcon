@@ -1,0 +1,149 @@
+<div class="row">
+    <div class="col-sm-9">
+      <form name="form">
+         <div class="panel panel-default md-whiteframe-z1 ng-app="app" ng-controller="Ctrl">
+            <div class="panel-heading bg-white text-center">
+              <span class="font-bold">Material List</span>
+            </div>
+          <table class="table table-bordered bg-white">
+              <thead>
+                  <th class="text-center">#</th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Type</th>
+                  <th class="text-center">Action</th>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="contact in model.contacts" ng-include="getTemplate(contact)">
+                  </tr>
+              </tbody>
+          </table>
+          <script type="text/ng-template" id="display">
+            <td class="text-center">{{contact.id}}</td>
+            <td class="text-center">{{contact.name}}</td>
+            <td class="text-center">{{contact.type}}</td>
+            <td class="text-center">
+              <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-xs btn-warning" ng-click="editContact(contact)" popover="Edit!" popover-trigger="mouseenter" > <span class="glyphicon glyphicon-pencil"></span></button>
+                  
+                  <button class="btn btn-xs btn-danger" ng-click="reset()" popover="Delete!" popover-trigger="mouseenter"><span class="glyphicon glyphicon-trash" ></span></button>
+              </div>
+            </td>
+          </script>
+          <script type="text/ng-template" id="edit">
+              <td><input type="text" ng-model="model.selected.id" class="md-input" /></td>
+              <td><input type="text" ng-model="model.selected.name" class="md-input" /></td>
+              <td><input type="text" ng-model="model.selected.type" class="md-input" /></td>
+              <td class="text-center">
+                <div class="buttons">
+                  <button ng-click="saveContact($index)" class="btn btn-xs btn-info" popover="Save!" popover-trigger="mouseenter"><span class="glyphicon glyphicon-ok"></span></button>
+                   <button class="btn btn-xs btn-danger" ng-click="reset()" popover="Delete!" popover-trigger="mouseenter"><span class="glyphicon glyphicon-trash"></span></button>
+                </div> 
+              </td>
+          </script>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-3">
+        <form name="myForm" ng-app="myApp" ng-controller="myController" class="container-fluid" ng-submit="myForm.$valid && submit()" novalidate>
+          <div class="panel panel-default md-whiteframe-z1">
+              <div class="panel-heading bg-white text-center">
+                <span class="font-bold">Add Material</span>
+              </div>
+            <div class="panel-body">
+              <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Name:</label>
+                      <input type="text" ng-model="user.name" class="md-input" name="name" id="name" ng-required="true"  ng-maxlength="10" minlength="3">
+                      <div ng-messages="myForm.name.$error" ng-if="myForm.$submitted || myForm.name.$touched">
+                        <div ng-message="required"> Material name is required.</div>
+                        <div ng-message="maxlength">Enter maximum 10 character!</div>
+                        <div ng-message="minlength">Enter Minimum 3 character!</div>
+                      </div>
+                 </md-input-container> 
+              </div>
+              <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Type:</label>
+                      <input type="text" class="md-input" ng-model="user.type" name="type" id="type" ng-required="true" ng-maxlength="5" minlength="2">
+                      <div ng-messages="myForm.type.$error" ng-if="myForm.$submitted || myForm.type.$touched">
+                        <div ng-message="required"> Type is required.</div>
+                        <div ng-message="maxlength">Enter maximum 5 character!</div>
+                        <div ng-message="minlength">Enter Minimum 2 character!</div>
+                      </div>
+                  </md-input-container> 
+              </div>
+              <footer class=" text-center">
+                <button type="submit" class="btn btn-info">Ok</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+              </footer> 
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
+ <script type="text/javascript">
+    app.controller('myController', function ($scope) {
+      //$scope.statuses = ['Planned', 'Confirmed', 'Cancelled'];
+      //$scope.options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', '...'];
+      $scope.submit = function() {
+        // submit code goes here
+        //alert("hello from submit");
+      };
+      $scope.reset = function() {
+        $scope.user = {
+          name: "",
+          type: "",
+        }
+      };
+      $scope.reset();
+    });
+</script>
+<script type="text/javascript">
+    app.controller("Ctrl",
+
+    function Ctrl($scope) {
+        $scope.model = {
+            contacts: [{
+                id: 1,
+                name: "Ben",
+                type: 28
+            }, {
+                id: 2,
+                name: "Sally",
+                type: 24
+            }, {
+                id: 3,
+                name: "John",
+                type: 32
+            }, {
+                id: 4,
+                name: "Jane",
+                type: 40
+            }],
+            selected: {}
+        };
+
+        // gets the template to ng-include for a table row / item
+        $scope.getTemplate = function (contact) {
+            if (contact.id === $scope.model.selected.id) return 'edit';
+            else return 'display';
+        };
+
+        $scope.editContact = function (contact) {
+            $scope.model.selected = angular.copy(contact);
+        };
+
+        $scope.saveContact = function (idx) {
+            console.log("Saving contact");
+            $scope.model.contacts[idx] = angular.copy($scope.model.selected);
+            $scope.reset();
+        };
+
+        $scope.reset = function () {
+            $scope.model.selected = {};
+        };
+    });
+</script>
+<script src="vendor/angular.min.js"></script>
+<script src="vendor/angular-route.js"></script>
+<script src="vendor/angular-resource.min.js"></script>

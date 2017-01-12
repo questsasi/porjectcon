@@ -1,0 +1,180 @@
+<div class="row">
+  <div class="col-sm-8 panel panel-default md-whiteframe-z1"">
+      <ul class="nav nav-lines nav-tabs b-accent">
+        <li class="active panel b-t-2x ">
+          <a href data-toggle="tab" data-target="#tab1">Employee</a>
+        </li>
+        <li class=" panel  b-t-2x ">
+          <a href data-toggle="tab" data-target="#tab2">Labour</a>
+        </li>
+        <li class=" panel  b-t-2x ">
+          <a href data-toggle="tab" data-target="#tab3">Vehicle</a>
+        </li>
+      </ul>
+    <div class="tab-content p b-a no-b-t bg-white m-b-md ">
+      <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab1">
+        <form name="myForm" ng-app="app" ng-controller="" class="container-fluid" ng-submit="myForm.$valid && submit()" novalidate>
+          <div class="panel">
+              <div class="panel-heading bg-white text-center">
+                <span class="font-bold">Employee Attendance</span>
+              </div>
+              <div class="panel-body">
+                <div class="md-form-group  col-sm-12">
+                   <div ng-controller="DatepickerDemoCtrl" class="m-b-lg">
+                     <div class="md-input-group">
+                        <input type="text" class="md-input" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                      <button type="button" class="btn btn-default" ng-click="open($event)" style="margin-left: 270px;margin-top: -70px"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="md-form-group  col-sm-6">
+                  <label>In:</label>
+                    <div ng-controller="TimepickerDemoCtrl" class="m-b-lg">
+                       <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                    </div>
+                </div>
+                <div class="md-form-group  col-sm-6">
+                  <label>Out:</label>
+                    <div ng-controller="TimepickerDemoCtrl" class="m-b-sm">
+                      <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                     </div>
+                </div>
+                <footer class=" text-center">
+                    <button type="submit" class="btn btn-success">Ok</button>
+                    <button type="reset" class="btn btn-danger">Cancel</button>
+                </footer> 
+              </div>
+          </div>
+        </form>
+      </div>
+      <div role="tabpanel" class="tab-pane animated fadeIn" id="tab2">
+        <form name="myForm" ng-app="app" ng-controller="PaymentEntryController" class="container-fluid" ng-submit="myForm.$valid && submit()" novalidate>
+            <div class=" text-center">
+              <span class="font-bold">Labour Attendance</span>
+            </div><hr>
+            <div class="panel-body">
+               <div class="md-form-group">
+                  <md-autocomplete
+                    ng-disabled="ctrl.isDisabled"
+                    md-no-cache="ctrl.noCache"
+                    md-selected-item="ctrl.selectedItem"
+                    md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                    md-search-text="ctrl.searchText"
+                    md-selected-item-change="ctrl.selectedItemChange(item)"
+                    md-items="item in ctrl.querySearch(ctrl.searchText)"
+                    md-item-text="item.display"
+                    md-min-length="0"
+                    placeholder=" Name">
+                    <md-item-template>
+                      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                   <md-not-found>
+                      No matches found for "{{ctrl.searchText}}".
+                    </md-not-found>
+                </md-autocomplete>
+              </div>
+              <div class="md-form-group  col-sm-12">
+               <label>Pay As:</label>
+                <button md-ink-ripple class="md-btn md-raised m-b btn-fw blue">Advance</button>
+                <button md-ink-ripple class="md-btn md-raised m-b btn-fw pink">Salary</button>
+              </div>
+              <div class="md-form-group  col-sm-12">
+               <label>Total days Worked:</label>
+              </div>
+              <div class="md-form-group col-sm-6">
+               
+               <label>Lop:</label>
+             
+              </div>
+              <div class="md-form-group col-sm-6">
+                <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                  <label>Total Assit Workers:</label>
+                  <input type="text" class="md-input" ng-model="user.totalaworkers" name="totalaworkers" id="totalaworkers" ng-required="true">
+                  <div ng-messages="myForm.totalaworkers.$error" ng-if="myForm.$submitted || myForm.totalaworkers.$touched">
+                      <div ng-message="required">Total Assit workers is required.</div>
+                  </div>
+                </md-input-container> 
+              </div>
+               <div class="md-form-group col-sm-6">
+                   <label>Payment:</label>
+              </div>
+               <div class="md-form-group  col-sm-12">
+               <label>Payment Mode:</label>
+                <button md-ink-ripple class="md-btn md-raised m-b btn-fw blue" ng-click="ShowHide()"  >Cash</button>
+                <button md-ink-ripple class="md-btn md-raised m-b btn-fw pink">Transfer</button>
+                <button md-ink-ripple class="md-btn md-raised m-b btn-fw red">Cheque</button>
+              </div> <div ng-hide = "IsHidden"> <input type="text" class="md-input" ng-model="user.type" placeholder="Account No"></div>
+            
+              <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                    <label>Square Feet</label>
+                    <input type="text" class="md-input" ng-model="user.sqf" name="sqf" id="sqf" ng-required="true">
+                    <div ng-messages="myForm.sqf.$error" ng-if="myForm.$submitted || myForm.sqf.$touched">
+                        <div ng-message="required"> Square Feet is required.</div>
+                    </div>
+                  </md-input-container> 
+              </div>
+              
+              <div class="md-form-group">
+              <ul ng-repeat='item in items'>
+    <li>
+      <a href ng-click="select(item)">Show {{item.name}}</a>    
+      <div ng-show="isSelected(item)"><input type="text" name=""></div>
+    </li>
+  </ul></div> 
+              <footer class=" text-center">
+                <button type="submit" class="btn btn-success">Ok</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+              </footer>
+            </div>
+        </form>
+      </div>
+      <div role="tabpanel" class="tab-pane animated fadeIn" id="tab3">
+        <form name="myForm" ng-app="app" ng-controller="" class="container-fluid" ng-submit="myForm.$valid && submit()" novalidate>
+          <div class="panel">
+              <div class="panel-heading bg-white text-center">
+                <span class="font-bold">Vehicle Attendance</span>
+              </div>
+             <div class="panel-body">
+                <div class="md-form-group col-sm-6">
+                    <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)" >
+                        <label>Vehicle No/Id:</label>
+                        <input type="text" ng-model="user.vno" class="md-input" name="vno" id="vno" ng-required="true">
+                        <div ng-messages="myForm.vno.$error" ng-if="myForm.$submitted || myForm.vno.$touched">
+                          <div ng-message="required"> Vehicle No is required.</div>
+                        </div>
+                   </md-input-container> 
+                </div>
+                <div class="md-form-group  col-sm-6">
+                    <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                        <label>Driver Name</label>
+                        <input type="text" class="md-input" ng-model="user.name" name="name" id="name" ng-required="true">
+                        <div ng-messages="myForm.name.$error" ng-if="myForm.$submitted || myForm.name.$touched">
+                          <div ng-message="required"> Driver Name is required.</div>
+                        </div>
+                    </md-input-container> 
+                </div>
+                <div class="md-form-group  col-sm-12">
+                  <md-content>
+                    <label>Date:</label>
+                    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                  </md-content>
+                </div>
+                <div class="md-form-group  col-sm-12">
+                 <md-content>
+                    <label>Time:</label>
+                    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" ></timepicker>
+                </md-content>
+            </div>
+            <footer class=" text-center">
+              <button type="submit" class="btn btn-success">Ok</button>
+              <button type="reset" class="btn btn-danger">Cancel</button>
+            </footer> 
+          </div>
+        </div>
+      </form>
+     </div>
+    </div>
+  </div>
+</div>
+ 

@@ -1,0 +1,163 @@
+<div class="row">
+    
+    <div class="col-sm-8 ">
+        <form name="myForm" ng-app="myApp" ng-controller="myController" class="container-fluid" ng-submit="myForm.$valid && submit()" novalidate>
+          <div class="panel panel-default md-whiteframe-z1">
+              <div class="panel-heading bg-white text-center">
+                <span class="font-bold">Material In</span>
+              </div>
+            <div class="panel-body">
+              <div class="md-form-group col-sm-6">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)" >
+                      <label>Date:</label>
+                      <input type="text" ng-model="user.date" class="md-input" name="date" id="date" ng-required="true"  ng-maxlength="10" minlength="3">
+                      <div ng-messages="myForm.date.$error" ng-if="myForm.$submitted || myForm.date.$touched">
+                        <div ng-message="required"> Date is required.</div>
+                        
+                      </div>
+                 </md-input-container> 
+              </div>
+              <div class="md-form-group  col-sm-6">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Time:</label>
+                      <input type="text" class="md-input" ng-model="user.time" name="time" id="time" ng-required="true" >
+                      <div ng-messages="myForm.time.$error" ng-if="myForm.$submitted || myForm.time.$touched">
+                        <div ng-message="required"> Time is required.</div>
+                        
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Material Name:</label>
+                      <input type="text" class="md-input" ng-model="user.name" name="name" id="name" ng-required="true" ng-maxlength="5" minlength="2">
+                      <div ng-messages="myForm.name.$error" ng-if="myForm.$submitted || myForm.name.$touched">
+                        <div ng-message="required"> Material Name is required.</div>
+    >
+                      </div>
+                  </md-input-container> 
+              </div>
+               
+               <div class="md-form-group  col-sm-6">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Supplier Name</label>
+                      <input type="text" class="md-input" ng-model="user.sname" name="sname" id="sname" ng-required="true">
+                      <div ng-messages="myForm.sname.$error" ng-if="myForm.$submitted || myForm.sname.$touched">
+                        <div ng-message="required"> Supplier Name is required.</div>
+                       
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group  col-sm-6">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>From:</label>
+                      <input type="text" class="md-input" ng-model="user.from" name="from" id="from" ng-required="true" >
+                      <div ng-messages="myForm.from.$error" ng-if="myForm.$submitted || myForm.from.$touched">
+                        <div ng-message="required"> From is required.</div>
+                        
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Qty:</label>
+                      <input type="text" class="md-input" ng-model="user.Qty" name="Qty" id="Qty" ng-required="true" >
+                      <div ng-messages="myForm.Qty.$error" ng-if="myForm.$submitted || myForm.Qty.$touched">
+                        <div ng-message="required">Quantity is required.</div>
+                        
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Rate:</label>
+                      <input type="text" class="md-input" ng-model="user.rate" name="rate" id="rate" ng-required="true" ng-maxlength="5" minlength="2">
+                      <div ng-messages="myForm.rate.$error" ng-if="myForm.$submitted || myForm.rate.$touched">
+                        <div ng-message="required"> Rate is required.</div>
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group">
+                  <md-input-container md-is-error="myForm.name.$invalid && (myForm.$submitted || myForm.name.$dirty)">
+                      <label>Amount:</label>
+                      <input type="text" class="md-input" ng-model="user.amount" name="amount" id="amount" ng-required="true" >
+                      <div ng-messages="myForm.amount.$error" ng-if="myForm.$submitted || myForm.amount.$touched">
+                        <div ng-message="required"> Amount is required.</div>
+                  
+                      </div>
+                  </md-input-container> 
+              </div>
+               <div class="md-form-group">
+      <md-input-container md-is-error="myForm.status.$invalid && (myForm.$submitted || myForm.status.$dirty)"><label>Invoice:</label>
+        <md-radio-group name="status" id="status" ng-model="obj.status" ng-required="true" class="">
+          <md-radio-button ng-repeat="s in statuses" ng-value="s">{{s}}</md-radio-button>
+        </md-radio-group>
+        <div ng-messages="myForm.status.$error"  ng-if="myForm.$submitted || myForm.status.$touched">
+          <div ng-message="required">status is required.</div>
+        </div>
+      </md-input-container>
+    </div>
+  <!--div class="md-form-group">
+   <label>Invoice No:</label>
+    <input type="radio" name="status" ng-model="showHideTest" ng-value="true">Yes
+    <input type="radio" name="status" ng-model="showHideTest" ng-value="false">No
+    <div ng-show="showHideTest"><input type="text" class="md-input" ng-model="user.type" placeholder="Invoice No"></div></div-->
+
+  <!--div class="form-group">
+      <label class="col-sm-2 control-label">Select</label>
+      <div class="col-sm-10">
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+    </div-->
+              <footer class=" text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+              </footer> 
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
+ <script type="text/javascript">
+    app.controller('myController', function ($scope) {
+      $scope.statuses = ['Yes', 'No'];
+      $scope.showHideTest = false;
+      //$scope.options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', '...'];
+      $scope.submit = function() {
+        // submit code goes here
+        //alert("hello from submit");
+      };
+      $scope.reset = function() {
+        $scope.user = {
+          name: "",
+          time: "",
+          status: "",
+          date:"",
+          sname:"",
+          Qty:"",
+          rate:"",
+          amount:""
+        }
+      };
+      $scope.reset();
+    });
+</script>
+<script type="text/javascript">
+    angular.module('datepickerBasicUsage', ['ngMaterial'])
+.controller('AppCtrl', function ($scope) {
+  $scope.myDate = new Date();
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth() - 2,
+    $scope.myDate.getDate());
+    $scope.maxDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth() + 2,
+    $scope.myDate.getDate());
+});
+  </script>

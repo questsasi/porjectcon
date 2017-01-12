@@ -1,0 +1,64 @@
+<nav ui-nav>
+  <ul class="nav">
+    <li class="nav-header m-v-sm hidden-folded">
+      Project Over View
+    </li>
+    <li ng-class="{active:$state.includes('ui.employee')}">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="fa fa-user"></i>
+         <span class="font-normal">Employee</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="ui.employee.attendance">Attendance</a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{active:$state.includes('ui.payment')}">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="fa fa-calculator"></i>
+        <span class="font-normal">Payment</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="ui.payment.payment">Payment</a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="ui.payment.paymententry">PaymentEntry</a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{active:$state.includes('material')}">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="fa fa-truck"></i>
+        <span class="font-normal">Material</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="material.materiallist">
+            <span>Materiallist</span>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="material.materialin">
+            <span>Material In</span>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="material.process">
+            <span>Material Process</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
